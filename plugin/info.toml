@@ -1,0 +1,9 @@
+[meta]
+name = "Friend Private Leaderboards"
+author = "Morl0ck"
+category = "Leaderboards"
+version = "0.1.0"
+siteid = 0
+
+[script]
+dependencies = [ "NadeoServices" ]

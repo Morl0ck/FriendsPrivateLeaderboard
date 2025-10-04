@@ -1,0 +1,45 @@
+@baseUrl = http://192.168.2.4:8080
+@json = application/json
+
+### Health check
+GET {{baseUrl}}/health
+
+### Submit a time (best time kept per group_key + map_id + account_id)
+POST {{baseUrl}}/times
+Content-Type: {{json}}
+
+{
+	"group_key": "friends1",
+	"account_id": "55c18e06-1001-4fee-aab2-ed8b6798e340",
+	"map_id": "kZoyOAR0_D_tUd1ZlOO4GaC3BI6",
+	"time_ms": 16873
+}
+
+### Submit another time for the same player (should keep the lower/best time)
+POST {{baseUrl}}/times
+Content-Type: {{json}}
+
+{
+	"group_key": "friends1",
+	"account_id": "acc_123",
+	"map_id": "map_A",
+	"time_ms": 70000
+}
+
+### Submit a second player for the same group + map
+POST {{baseUrl}}/times
+Content-Type: {{json}}
+
+{
+	"group_key": "friends1",
+	"account_id": "acc_456",
+	"map_id": "map_A",
+	"time_ms": 60000
+}
+
+### Get leaderboard for a group + map (default limit=50)
+GET {{baseUrl}}/leaderboard?group_key=friends1&map_id=map_A
+
+### Get leaderboard with explicit limit
+GET {{baseUrl}}/leaderboard?group_key=friends1&map_id=map_A&limit=10
+

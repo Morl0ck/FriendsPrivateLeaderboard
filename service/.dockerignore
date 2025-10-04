@@ -1,0 +1,11 @@
+**/.git
+**/.DS_Store
+**/bin
+**/obj
+**/node_modules
+**/.vscode
+**/*.log
+**/coverage
+**/.idea
+**/.venv
+**/venv
